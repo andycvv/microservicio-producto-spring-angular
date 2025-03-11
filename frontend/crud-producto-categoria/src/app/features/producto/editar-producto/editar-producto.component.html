@@ -1,0 +1,12 @@
+<app-mostrar-errores [errores]="errores" />
+
+@if (modelo && categoriaSeleccionada) {
+  <app-formulario-producto
+    titulo="Editar productos"
+    (posteoFormulario)="guardarCambios($event)"
+    [modelo]="modelo"
+    [categoriaSeleccionada]="categoriaSeleccionada"
+  />
+} @else {
+  <app-loading></app-loading>
+}

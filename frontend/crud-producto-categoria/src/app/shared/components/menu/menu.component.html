@@ -1,0 +1,10 @@
+<mat-toolbar>
+  <a mat-button routerLink="/">
+    <mat-icon>laptops windows</mat-icon> Sistema de Ventas
+  </a>
+  <button mat-button [matMenuTriggerFor]="mantenimiento">Mantenimientos</button>
+  <mat-menu #mantenimiento="matMenu">
+    <button mat-menu-item routerLink="/admin/categorias">Categorías</button>
+    <button mat-menu-item routerLink="/admin/productos">Productos</button>
+  </mat-menu>
+</mat-toolbar>

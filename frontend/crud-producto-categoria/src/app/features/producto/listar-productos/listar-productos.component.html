@@ -1,0 +1,54 @@
+<h2>Productos</h2>
+
+<div>
+  <button mat-flat-button routerLink="crear">Crear nuevo producto</button>
+</div>
+
+@if (productos) {
+  <table mat-table [dataSource]="productos" class="mat-elevation-z8 tbl-productos">
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef>ID</th>
+      <td mat-cell *matCellDef="let producto">{{ producto.id }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="nombre">
+      <th mat-header-cell *matHeaderCellDef>Nombre</th>
+      <td mat-cell *matCellDef="let producto">{{ producto.nombre }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="precio">
+      <th mat-header-cell *matHeaderCellDef>Precio</th>
+      <td mat-cell *matCellDef="let producto">{{ producto.precio | currency: 'S/.' }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="descripcion">
+      <th mat-header-cell *matHeaderCellDef>Descripción</th>
+      <td mat-cell *matCellDef="let producto">{{ producto.descripcion.slice(0,30) + '...' }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="categoria">
+      <th mat-header-cell *matHeaderCellDef>Categoria</th>
+      <td mat-cell *matCellDef="let producto">{{ producto.categoria.nombre }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="acciones">
+      <th mat-header-cell *matHeaderCellDef>Acciones</th>
+      <td mat-cell *matCellDef="let producto">
+        <a mat-flat-button routerLink="editar/{{producto.id}}">Editar</a>
+        <button 
+          mat-flat-button 
+          style="background-color: rgb(188, 2, 2);" 
+          (confirm)="borrar(producto.id)"
+          [swal]="{title: 'Confirmación', text: 'Deseas borrar este registro?', showCancelButton: true}"
+        >
+          Borrar
+        </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="columnasAMostrar"></tr>
+    <tr mat-row *matRowDef="let row; columns: columnasAMostrar"></tr>
+  </table>
+} @else {
+  <app-loading></app-loading>
+}

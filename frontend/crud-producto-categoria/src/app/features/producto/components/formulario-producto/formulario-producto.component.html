@@ -1,0 +1,48 @@
+<h2>{{titulo}}</h2>
+
+@if (categorias) {
+  <form (ngSubmit)="guardarCambios()" [formGroup]="form">
+    <mat-form-field appearance="outline">
+      <mat-label>Nombre</mat-label>
+      <input [formControl]="form.controls.nombre" matInput />
+      <mat-error>{{obtenerErrorDeCampo("nombre")}}</mat-error>
+      @if (form.controls.nombre.pending) {
+        <mat-spinner matSuffix [diameter]="16" style="margin-right: 1rem;"></mat-spinner>
+      }
+    </mat-form-field>
+  
+    <mat-form-field appearance="outline">
+      <mat-label>Precio</mat-label>
+      <input [formControl]="form.controls.precio" matInput />
+      <mat-error>{{obtenerErrorDeCampo("precio")}}</mat-error>
+      @if (form.controls.precio.pending) {
+        <mat-spinner matSuffix [diameter]="16" style="margin-right: 1rem;"></mat-spinner>
+      }
+    </mat-form-field>
+  
+    <mat-form-field appearance="outline">
+      <mat-label>Descripción</mat-label>
+      <textarea matInput [formControl]="form.controls.descripcion"></textarea>
+      <mat-error>{{obtenerErrorDeCampo("descripcion")}}</mat-error>
+      @if (form.controls.descripcion.pending) {
+        <mat-spinner matSuffix [diameter]="16" style="margin-right: 1rem;"></mat-spinner>
+      }
+    </mat-form-field>
+  
+    <mat-form-field>
+      <mat-label>Categoría</mat-label>
+      <mat-select [formControl]="form.controls.categoriaId">
+        @for (categoria of categorias; track categoria.id) {
+          <mat-option [value]="categoria.id">{{categoria.nombre}}</mat-option>
+        }
+      </mat-select>
+    </mat-form-field>
+  
+    <div>
+      <button type="submit" mat-flat-button [disabled]="form.invalid || form.pending">Guardar cambios</button>
+      <a mat-stroked-button routerLink="/admin/productos">Cancelar</a>
+    </div>
+  </form>
+} @else {
+  <app-loading></app-loading>
+}

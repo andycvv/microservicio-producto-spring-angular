@@ -1,0 +1,39 @@
+<h2>Categorías</h2>
+
+<div>
+  <button mat-flat-button routerLink="crear">Crear nueva categoria</button>
+</div>
+
+@if (categorias) {
+  <table mat-table [dataSource]="categorias" class="mat-elevation-z8 tbl-categorias">
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef>ID</th>
+      <td mat-cell *matCellDef="let categoria">{{ categoria.id }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="nombre">
+      <th mat-header-cell *matHeaderCellDef>Nombre</th>
+      <td mat-cell *matCellDef="let categoria">{{ categoria.nombre }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="acciones">
+      <th mat-header-cell *matHeaderCellDef>Acciones</th>
+      <td mat-cell *matCellDef="let categoria">
+        <a mat-flat-button routerLink="editar/{{categoria.id}}">Editar</a>
+        <button 
+          mat-flat-button 
+          style="background-color: rgb(188, 2, 2);" 
+          (confirm)="borrar(categoria.id)"
+          [swal]="{title: 'Confirmación', text: 'Deseas borrar este registro?', showCancelButton: true}"
+        >
+          Borrar
+        </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="columnasAMostrar"></tr>
+    <tr mat-row *matRowDef="let row; columns: columnasAMostrar"></tr>
+  </table>
+} @else {
+  <app-loading></app-loading>
+}

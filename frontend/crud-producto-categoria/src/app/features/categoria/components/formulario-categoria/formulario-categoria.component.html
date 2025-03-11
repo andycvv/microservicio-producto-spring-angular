@@ -1,0 +1,16 @@
+<h2>{{titulo}}</h2>
+
+<form (ngSubmit)="guardarCambios()" [formGroup]="form">
+  <mat-form-field appearance="outline">
+    <mat-label>Nombre</mat-label>
+    <input [formControl]="form.controls.nombre" matInput />
+    <mat-error>{{obtenerErrorDeCampo("nombre")}}</mat-error>
+    @if (form.controls.nombre.pending) {
+      <mat-spinner matSuffix [diameter]="16" style="margin-right: 1rem;"></mat-spinner>
+    }
+  </mat-form-field>
+  <div>
+    <button type="submit" mat-flat-button [disabled]="form.invalid || form.pending">Guardar cambios</button>
+    <a mat-stroked-button routerLink="/admin/categorias">Cancelar</a>
+  </div>
+</form>

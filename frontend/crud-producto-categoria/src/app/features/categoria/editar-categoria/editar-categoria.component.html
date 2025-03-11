@@ -1,0 +1,11 @@
+<app-mostrar-errores [errores]="errores" />
+
+@if (modelo) {
+  <app-formulario-categoria
+    titulo="Editar categoría"
+    (posteoFormulario)="guardarCambios($event)"
+    [modelo]="modelo"
+  />
+} @else {
+  <app-loading></app-loading>
+}

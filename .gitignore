@@ -1,0 +1,7 @@
+# Ignorar carpetas de dependencias
+backend/producto-servicio/target/
+frontend/crud-producto-categoria/node_modules/
+
+# Ignorar archivos de IntelliJ y VS Code
+.idea/
+.vscode/
