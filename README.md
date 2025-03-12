@@ -13,9 +13,9 @@ Este proyecto es una aplicación web para la gestión de productos y categorías
 
 Antes de ejecutar el proyecto, asegúrate de tener instalado:
 
-- **Node.js** (`>= 16.x`)
+- **Node.js**
 - **Java JDK 17+**
-- **SQL Server** (Local o en la nube)
+- **SQL Server**
 
 ---
 
@@ -71,7 +71,8 @@ server.servlet.context-path=/api/v1
 ## ▶️ Cómo ejecutar el proyecto
 
 ### 1️⃣ **Levantar el backend (Spring Boot)**
-Si tienes un IDE, puedes levantarlo de la forma tradicional, sino, usa este comando de maven:
+**IMPORTANTE: Si abres el proyecto en un IDE (Eclipse, IntelliJ, etc), debes tener instalado el plugin de Lombok.**
+Si tienes un IDE, puedes levantarlo de la forma tradicional, o usando este comando de maven:
 ```sh
 cd backend/producto-servicio
 mvn spring-boot:run
