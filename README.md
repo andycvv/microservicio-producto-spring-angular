@@ -60,7 +60,7 @@ spring.datasource.username=sa
 spring.datasource.password=sql
 spring.datasource.driver-class-name=com.microsoft.sqlserver.jdbc.SQLServerDriver
 
-spring.jpa.hibernate.ddl-auto=validate
+spring.jpa.hibernate.ddl-auto=update
 spring.jpa.show-sql=true
 
 server.servlet.context-path=/api/v1
